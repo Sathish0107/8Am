@@ -3,7 +3,7 @@ Feature: Add TariffPlan Functionality
   I want to use this template for my feature file
   
   Background:
-   Given user should be telecom homepage
+  # Given user should be telecom homepage
    And user should navigate to Addtariffplan page
   
 

@@ -4,53 +4,64 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.Assert;
-
+import org.objectrepository.AddCustomerPage;
+import org.objectrepository.HomePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.resources.FunctionalLibrary;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.cucumber.datatable.DataTable;
 
-public class AddCustomerSteps  {
+public class AddCustomerSteps extends FunctionalLibrary {
 	
-	static WebDriver driver;
+	//static WebDriver driver;
 	
 	@Given("user should be in telecom home page")
 	public void user_should_be_in_telecom_home_page() {
 		
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Asus\\Desktop\\New folder (2)\\CucumberProjectClass\\Driver\\chromedriver.exe");
-		 driver=new ChromeDriver();
-		driver.get("http://demo.guru99.com/telecom/");
+		//System.setProperty("webdriver.chrome.driver", "C:\\Users\\Asus\\Desktop\\New folder (2)\\CucumberProjectClass\\Driver\\chromedriver.exe");
+		// driver=new ChromeDriver();
+		//driver.get("http://demo.guru99.com/telecom/");
 	    
 	}
 
 	@Given("user click on add customer button")
 	public void user_click_on_add_customer_button() {
 		
+		HomePage page=new HomePage();
+		//driver.findElement(By.xpath("(//a[text()='Add Customer'])[1]")).click();
 		
-		driver.findElement(By.xpath("(//a[text()='Add Customer'])[1]")).click();
-		
-		
+      button(page.getAddCustomer());
 	   
 	}
 
 	@When("user enters all the fields")
 	public void user_enters_all_the_fields() {
 		
-
+      AddCustomerPage page=new AddCustomerPage();
+      
+      button(page.getDoneButton());
+      insertValue(page.getFname(), "karthi");
+      insertValue(page.getLname(), "rajan");
+      insertValue(page.getMail(), "karthi@gmail.com");
+      insertValue(page.getAddress(), "tanjore");
+      insertValue(page.getPhno(), "1234567887655");
 
 		
 		
-		driver.findElement(By.xpath("(//label[text()='Done'])[1]")).click();
-		driver.findElement(By.id("fname")).sendKeys("karthi");
-		driver.findElement(By.id("lname")).sendKeys("rajan");
-		driver.findElement(By.id("email")).sendKeys("karthi@gmail.com");
-		driver.findElement(By.name("addr")).sendKeys("tanjore");
-		driver.findElement(By.id("telephoneno")).sendKeys("123456778");
-	
+		/*
+		 * driver.findElement(By.xpath("(//label[text()='Done'])[1]")).click();
+		 * driver.findElement(By.id("fname")).sendKeys("karthi");
+		 * driver.findElement(By.id("lname")).sendKeys("rajan");
+		 * driver.findElement(By.id("email")).sendKeys("karthi@gmail.com");
+		 * driver.findElement(By.name("addr")).sendKeys("tanjore");
+		 * driver.findElement(By.id("telephoneno")).sendKeys("123456778");
+		 */
 	    
 	}
 	
@@ -98,9 +109,11 @@ public class AddCustomerSteps  {
 	@When("user click on submit button")
 	public void user_click_on_submit_button() {
 		
-	
+		AddCustomerPage page=new AddCustomerPage();
 		
-		driver.findElement(By.xpath("(//input[@type='submit'])[1]")).click();
+		button(page.getSubmitButton());
+		
+		//driver.findElement(By.xpath("(//input[@type='submit'])[1]")).click();
 	  
 	}
 

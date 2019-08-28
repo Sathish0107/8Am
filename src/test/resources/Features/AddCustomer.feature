@@ -3,7 +3,7 @@ Feature: Add Customer functionality
   I want to use this template for my feature file
 
 Background:
-    Given user should be in telecom home page
+   # Given user should be in telecom home page
     And user click on add customer button
 
 @smoke @cucumber
